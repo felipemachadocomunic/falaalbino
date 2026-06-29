@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fala Albino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,20 +12,22 @@
       --yellow: #F5C800;
       --yellow-dark: #D4AC00;
       --black: #111111;
+      --black-soft: #1A1A1A;
       --white: #FFFFFF;
-      --gray-light: #F2F2F2;
+      --off-white: #F7F7F5;
+      --gray-light: #EFEFED;
       --gray-mid: #CCCCCC;
-      --gray-text: #555555;
-      --radius: 4px;
+      --gray-text: #777777;
+      --border: #E5E5E3;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--white);
       color: var(--black);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ── HEADER ── */
@@ -37,573 +39,691 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 48px;
-      height: 68px;
-      border-bottom: 3px solid var(--yellow);
+      padding: 0 40px;
+      height: 64px;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 2px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
     }
     .logo span { color: var(--yellow); }
 
-    nav { display: flex; gap: 8px; align-items: center; }
+    nav { display: flex; gap: 32px; align-items: center; }
     nav a {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #888;
       text-decoration: none;
-      padding: 8px 14px;
-      border-radius: var(--radius);
-      transition: background 0.18s, color 0.18s;
+      transition: color 0.15s;
     }
-    nav a:hover { background: var(--yellow); color: var(--black); }
-    nav a.active { background: var(--yellow); color: var(--black); }
+    nav a:hover, nav a.active { color: var(--white); }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--black) !important;
+      padding: 8px 16px;
+      border-radius: 2px;
+      font-weight: 700 !important;
+    }
 
     /* ── HERO ── */
     .hero {
       background: var(--black);
-      color: var(--white);
-      padding: 96px 48px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      min-height: 520px;
+      padding: 100px 40px 80px;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .hero-eyebrow {
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 80px;
+    }
+
+    .hero-tag {
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--yellow);
-      margin-bottom: 20px;
+      border: 1px solid #333;
+      padding: 6px 14px;
+      border-radius: 20px;
     }
 
+    .hero-num {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 1px;
+    }
+
+    .hero-main { flex: 1; }
+
     .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(56px, 7vw, 96px);
-      line-height: 0.95;
-      letter-spacing: 2px;
-      margin-bottom: 28px;
+      font-size: clamp(52px, 9vw, 120px);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 40px;
     }
 
     .hero h1 em {
-      font-family: 'Playfair Display', serif;
+      font-family: 'DM Sans', sans-serif;
       font-style: italic;
+      font-weight: 400;
       color: var(--yellow);
-      display: block;
     }
 
-    .hero p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: #AAAAAA;
-      max-width: 420px;
-      margin-bottom: 36px;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--yellow);
-      color: var(--black);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 14px 28px;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: background 0.18s, transform 0.12s;
-    }
-    .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-1px); }
-
-    .hero-visual {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .hero-card {
-      background: #1A1A1A;
-      border-radius: 8px;
-      overflow: hidden;
-      aspect-ratio: 4/5;
+    .hero-bottom {
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      position: relative;
-      border: 1px solid #2A2A2A;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 48px;
+      border-top: 1px solid #222;
     }
 
-    .hero-card:first-child {
-      grid-row: span 2;
-      aspect-ratio: unset;
+    .hero-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666;
+      max-width: 340px;
     }
 
-    .hero-card-emoji {
-      font-size: 40px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -60%);
-      opacity: 0.25;
-    }
-
-    .hero-card-label {
+    .hero-scroll {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 4px;
-      position: relative;
-      z-index: 1;
+      color: #444;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .hero-scroll:hover { color: var(--yellow); }
+    .scroll-arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: border-color 0.15s;
+    }
+    .hero-scroll:hover .scroll-arrow { border-color: var(--yellow); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 24px 40px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .hero-card-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
+    .stat-item { text-align: center; }
+    .stat-item .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1;
+    }
+    .stat-item .lbl {
+      font-size: 11px;
+      font-weight: 600;
       letter-spacing: 1px;
-      color: var(--white);
-      position: relative;
-      z-index: 1;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.5);
+      margin-top: 4px;
     }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 80px 48px; }
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(0,0,0,0.15);
+    }
+
+    /* ── SECTION BASE ── */
+    .section { padding: 96px 40px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
     .section-label {
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--yellow);
       margin-bottom: 12px;
     }
+
     .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 5vw, 56px);
-      letter-spacing: 1px;
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 15px;
-      color: var(--gray-text);
-      max-width: 560px;
-      line-height: 1.7;
-      margin-bottom: 48px;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.05;
+      color: var(--black);
     }
 
-    /* ── DESTINOS (GUIAS) ── */
-    .guias { background: var(--gray-light); }
+    .section-title em {
+      font-family: 'DM Sans', sans-serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .section-link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .section-link:hover { color: var(--yellow); }
+
+    /* ── GUIAS DE CIDADE ── */
+    .guias { background: var(--off-white); }
+
     .guias-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .guia-card {
       background: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--gray-mid);
-      transition: transform 0.18s, box-shadow 0.18s;
-      cursor: pointer;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
       text-decoration: none;
       color: inherit;
+      transition: background 0.15s;
+      min-height: 280px;
     }
-    .guia-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.10); }
+    .guia-card:hover { background: var(--black); }
+    .guia-card:hover .guia-name,
+    .guia-card:hover .guia-desc { color: var(--white); }
+    .guia-card:hover .guia-icon { background: var(--yellow); }
+    .guia-card:hover .guia-tag { color: #555; border-color: #333; }
 
-    .guia-card-top {
+    .guia-icon {
+      width: 48px;
+      height: 48px;
       background: var(--black);
-      height: 120px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
-      position: relative;
-    }
-
-    .guia-card.em-breve .guia-card-top { opacity: 0.5; }
-
-    .badge-breve {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #333;
-      color: #888;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 8px;
-      border-radius: 20px;
-    }
-
-    .guia-card-body { padding: 20px; }
-    .guia-card-body h3 {
-      font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
+      transition: background 0.15s;
     }
-    .guia-card-body p {
+
+    .guia-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      width: fit-content;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .guia-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-top: auto;
+      transition: color 0.15s;
+    }
+
+    .guia-desc {
       font-size: 13px;
       color: var(--gray-text);
-      line-height: 1.5;
+      line-height: 1.6;
+      transition: color 0.15s;
     }
 
     /* ── VIVA SANTA MARIA ── */
-    .viva-hero {
-      background: var(--yellow);
-      padding: 72px 48px 56px;
+    .viva { background: var(--black); }
+
+    .viva .section-title { color: var(--white); }
+
+    .viva-headline {
+      font-size: clamp(64px, 12vw, 160px);
+      font-weight: 800;
+      letter-spacing: -4px;
+      line-height: 0.88;
+      color: var(--white);
+      margin-bottom: 48px;
+    }
+
+    .viva-headline span {
+      color: var(--yellow);
+      font-family: 'DM Sans', sans-serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .viva-sub {
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 32px;
+      border-top: 1px solid #222;
       gap: 32px;
       flex-wrap: wrap;
     }
 
-    .viva-hero h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 8vw, 96px);
-      line-height: 0.9;
-      letter-spacing: 2px;
-      color: var(--black);
-    }
-    .viva-hero h2 span {
-      display: block;
-      font-size: 0.45em;
-      letter-spacing: 5px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      color: var(--black);
-      opacity: 0.5;
-    }
-    .viva-hero-desc {
-      max-width: 360px;
-      font-size: 15px;
-      line-height: 1.7;
-      color: #333;
+    .viva-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #666;
+      max-width: 400px;
     }
 
-    /* CATEGORIAS */
+    .btn-yellow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 2px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .btn-yellow:hover { background: var(--yellow-dark); }
+
+    /* ── CATEGORIAS ── */
     .categorias { background: var(--white); }
+
     .cat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .cat-item {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 6px;
-      padding: 20px 16px;
+      background: var(--white);
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.12s;
+      gap: 12px;
       text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+      cursor: pointer;
     }
-    .cat-item:hover { background: var(--yellow); color: var(--black); transform: translateY(-2px); }
+    .cat-item:hover { background: var(--black); }
+    .cat-item:hover .cat-label { color: var(--white); }
+    .cat-item:hover .cat-count { color: #555; }
+    .cat-item:hover .cat-icon-wrap { background: var(--yellow); }
 
-    .cat-icon { font-size: 26px; }
-    .cat-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      line-height: 1.3;
-    }
-    .cat-count {
-      font-size: 11px;
-      opacity: 0.5;
-      margin-top: auto;
-    }
-
-    /* ESTABELECIMENTOS */
-    .estabelecimentos { background: var(--gray-light); }
-    .est-header {
+    .cat-icon-wrap {
+      width: 40px;
+      height: 40px;
+      background: var(--off-white);
+      border-radius: 4px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-      gap: 16px;
+      justify-content: center;
+      font-size: 18px;
+      transition: background 0.15s;
     }
-    .cat-filter {
+
+    .cat-label {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+      transition: color 0.15s;
+    }
+
+    .cat-count {
+      font-size: 11px;
+      color: var(--gray-text);
+      transition: color 0.15s;
+    }
+
+    /* ── DESTAQUES ── */
+    .destaques { background: var(--off-white); }
+
+    .filter-row {
       display: flex;
       gap: 8px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
+
     .filter-btn {
       font-size: 12px;
       font-weight: 600;
-      padding: 7px 14px;
-      border-radius: 20px;
-      border: 2px solid var(--black);
-      background: transparent;
+      letter-spacing: 0.5px;
+      padding: 8px 18px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      background: var(--white);
       cursor: pointer;
-      transition: background 0.15s, color 0.15s;
+      transition: all 0.15s;
     }
     .filter-btn.active, .filter-btn:hover {
       background: var(--black);
       color: var(--white);
+      border-color: var(--black);
     }
 
     .est-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .est-card {
       background: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--gray-mid);
-      transition: box-shadow 0.18s;
+      transition: background 0.15s;
     }
-    .est-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
+    .est-card:hover { background: var(--off-white); }
 
-    .est-card-img {
-      height: 160px;
-      background: #E8E8E8;
+    .est-card-top {
+      height: 180px;
+      background: var(--gray-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
+      font-size: 52px;
       position: relative;
+      border-bottom: 1px solid var(--border);
     }
 
     .est-tag {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
+      bottom: 16px;
+      left: 16px;
       background: var(--yellow);
       color: var(--black);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
+      padding: 5px 12px;
+      border-radius: 2px;
     }
 
-    .est-card-body { padding: 20px; }
+    .est-card-body { padding: 28px; }
     .est-card-body h4 {
-      font-weight: 700;
       font-size: 16px;
-      margin-bottom: 4px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
     }
-    .est-card-body .est-meta {
+    .est-meta {
       font-size: 12px;
       color: var(--gray-text);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
-    .est-card-body .est-desc {
+    .est-desc {
       font-size: 13px;
       color: var(--gray-text);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* ── GASTRONOMIA ── */
-    .gastro { background: var(--black); color: var(--white); }
+    .gastro { background: var(--black); }
     .gastro .section-title { color: var(--white); }
-    .gastro .section-sub { color: #888; }
-    .gastro .section-label { color: var(--yellow); }
+    .gastro .section-header { border-bottom-color: #222; }
+    .gastro .section-link { color: var(--white); }
+    .gastro .section-link:hover { color: var(--yellow); }
 
     .gastro-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 1px;
+      background: #222;
+      border: 1px solid #222;
     }
 
     .gastro-card {
-      background: #1A1A1A;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #2A2A2A;
+      background: var(--black-soft);
       display: flex;
       flex-direction: column;
+      transition: background 0.15s;
     }
+    .gastro-card:hover { background: #222; }
 
-    .gastro-card-top {
-      height: 200px;
+    .gastro-img {
+      height: 220px;
+      background: #1A1A1A;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 64px;
-      background: #222;
+      font-size: 56px;
+      border-bottom: 1px solid #222;
     }
+    .gastro-card.featured .gastro-img { height: 300px; }
 
-    .gastro-card.featured .gastro-card-top { height: 280px; }
-
-    .gastro-card-body { padding: 24px; flex: 1; }
-    .gastro-card-body .tag {
+    .gastro-body { padding: 28px; flex: 1; }
+    .gastro-tag {
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--yellow);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
-    .gastro-card-body h3 {
-      font-weight: 700;
+    .gastro-body h3 {
       font-size: 17px;
-      margin-bottom: 8px;
+      font-weight: 700;
       color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
     }
-    .gastro-card-body p {
+    .gastro-body p {
       font-size: 13px;
-      color: #888;
-      line-height: 1.6;
+      color: #666;
+      line-height: 1.7;
     }
 
     /* ── SOBRE ── */
-    .sobre {
-      background: var(--yellow);
+    .sobre { background: var(--yellow); }
+
+    .sobre-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 80px;
       align-items: center;
     }
 
-    .sobre-text .section-label { color: #7A6400; }
-    .sobre-text .section-title { color: var(--black); }
+    .sobre .section-label { color: rgba(0,0,0,0.4); }
+    .sobre .section-title { color: var(--black); }
+
     .sobre-text p {
       font-size: 15px;
       line-height: 1.8;
-      color: #333;
+      color: rgba(0,0,0,0.6);
       margin-bottom: 16px;
     }
+
+    .sobre-text p strong { color: var(--black); }
+
     .sobre-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 1px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.12);
       margin-top: 40px;
     }
-    .stat {
-      background: rgba(0,0,0,0.08);
-      border-radius: 6px;
-      padding: 20px;
+
+    .stat-box {
+      background: rgba(255,255,255,0.3);
+      padding: 24px;
     }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 42px;
-      letter-spacing: 1px;
+
+    .stat-box .num {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
       color: var(--black);
       line-height: 1;
     }
-    .stat-label {
+
+    .stat-box .lbl {
       font-size: 12px;
-      color: #555;
-      margin-top: 4px;
+      color: rgba(0,0,0,0.5);
+      margin-top: 6px;
     }
 
     .sobre-visual {
+      background: var(--black);
+      border-radius: 4px;
+      height: 480px;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 16px;
     }
 
-    .sobre-img-placeholder {
-      background: var(--black);
-      border-radius: 12px;
-      height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .sobre-img-placeholder span { font-size: 56px; }
-    .sobre-img-placeholder p {
+    .sobre-visual span { font-size: 64px; }
+    .sobre-visual p {
       font-size: 12px;
-      color: #555;
-      letter-spacing: 1px;
+      color: #444;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     /* ── FOOTER ── */
     footer {
       background: var(--black);
-      padding: 56px 48px 32px;
-      color: #888;
+      padding: 72px 40px 32px;
+      border-top: 1px solid #1A1A1A;
     }
 
-    .footer-top {
+    .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 48px;
-      margin-bottom: 48px;
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid #1A1A1A;
     }
 
-    .footer-brand .logo { font-size: 28px; display: block; margin-bottom: 16px; }
-    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-brand .logo { font-size: 13px; display: block; margin-bottom: 20px; }
+    .footer-brand p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 260px;
+    }
 
     .footer-col h5 {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 20px;
+      color: #444;
+      margin-bottom: 24px;
     }
+
     .footer-col a {
       display: block;
       font-size: 13px;
-      color: #888;
+      color: #555;
       text-decoration: none;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       transition: color 0.15s;
     }
-    .footer-col a:hover { color: var(--yellow); }
+    .footer-col a:hover { color: var(--white); }
 
     .footer-bottom {
-      border-top: 1px solid #222;
-      padding-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
+      color: #333;
       flex-wrap: wrap;
       gap: 12px;
     }
+
     .footer-bottom a { color: var(--yellow); text-decoration: none; }
 
     /* ── MOBILE ── */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       header { padding: 0 20px; }
-      header nav { display: none; }
+      nav { display: none; }
 
-      .hero { grid-template-columns: 1fr; padding: 56px 20px 48px; gap: 40px; }
-      .hero-visual { display: none; }
+      .hero { padding: 64px 20px 48px; min-height: auto; }
+      .hero h1 { font-size: 56px; letter-spacing: -1px; }
+      .hero-top { margin-bottom: 48px; }
 
-      section { padding: 56px 20px; }
-      .viva-hero { padding: 48px 20px; }
+      .section { padding: 64px 20px; }
 
-      .sobre { grid-template-columns: 1fr; }
+      .guias-grid { grid-template-columns: 1fr 1fr; }
+      .viva-headline { font-size: 72px; letter-spacing: -2px; }
+
+      .cat-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+
+      .est-grid { grid-template-columns: 1fr; }
+      .gastro-grid { grid-template-columns: 1fr; }
+      .gastro-card.featured .gastro-img { height: 220px; }
+
+      .sobre-grid { grid-template-columns: 1fr; }
       .sobre-visual { display: none; }
 
-      .gastro-grid { grid-template-columns: 1fr; }
-      .gastro-card.featured .gastro-card-top { height: 200px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 48px 20px 24px; }
 
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      footer { padding: 40px 20px 24px; }
+      .stats-bar { padding: 20px; }
+      .stat-divider { display: none; }
+    }
 
-      .cat-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    @media (max-width: 480px) {
+      .guias-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 44px; }
+      .viva-headline { font-size: 52px; letter-spacing: -1px; }
     }
   </style>
 </head>
@@ -614,296 +734,342 @@
   <a href="#" class="logo">Fala<span>Albino</span></a>
   <nav>
     <a href="#guias">Guias</a>
-    <a href="#viva-sm" class="active">Viva Santa Maria</a>
-    <a href="#gastronomia">Gastronomia</a>
+    <a href="#viva">Viva Santa Maria</a>
+    <a href="#gastro">Gastronomia</a>
     <a href="#sobre">Sobre</a>
-    <a href="#contato">Contato</a>
+    <a href="#footer" class="nav-cta">Contato</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div>
-    <p class="hero-eyebrow">Gastronomia · Guias · Lifestyle · RS</p>
-    <h1>Conteúdo que<em>faz sentido</em>para você</h1>
-    <p>Dicas gastronômicas, guias de cidade e experiências reais do Rio Grande do Sul. Direto de quem vive e respira cultura gaúcha.</p>
-    <a href="#guias" class="btn-primary">Explorar guias →</a>
+  <div class="hero-top">
+    <span class="hero-tag">Gastronomia · Guias · Lifestyle</span>
+    <span class="hero-num">01 / 05</span>
   </div>
-  <div class="hero-visual">
-    <div class="hero-card">
-      <div class="hero-card-emoji">☕</div>
-      <div class="hero-card-label">Guia</div>
-      <div class="hero-card-title">Cafeterias de Santa Maria</div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-card-emoji">🍷</div>
-      <div class="hero-card-label">Novo</div>
-      <div class="hero-card-title">Serra Gaúcha</div>
-    </div>
-    <div class="hero-card">
-      <div class="hero-card-emoji">🍽️</div>
-      <div class="hero-card-label">Destaque</div>
-      <div class="hero-card-title">Jantares em Gramado</div>
-    </div>
-  </div>
-</section>
 
-<!-- GUIAS DE CIDADE -->
-<section class="guias" id="guias">
-  <p class="section-label">Destinos</p>
-  <h2 class="section-title">Guias de Cidade</h2>
-  <p class="section-sub">Cada cidade tem seu guia completo — cafeterias, restaurantes, comércio, serviços e o que fazer. Escolha seu destino.</p>
-  <div class="guias-grid">
-    <a href="#viva-sm" class="guia-card">
-      <div class="guia-card-top" style="background:#1A1A1A;">🏙️</div>
-      <div class="guia-card-body">
-        <h3>Santa Maria</h3>
-        <p>O guia completo da Princesinha do Planalto: cafeterias, restaurantes, serviços e mais.</p>
-      </div>
-    </a>
-    <a href="#" class="guia-card em-breve">
-      <div class="guia-card-top" style="background:#1A1200;">⛷️<span class="badge-breve">Em breve</span></div>
-      <div class="guia-card-body">
-        <h3>Gramado</h3>
-        <p>O melhor da cidade mais encantadora do Brasil, em todas as estações.</p>
-      </div>
-    </a>
-    <a href="#" class="guia-card em-breve">
-      <div class="guia-card-top" style="background:#001A00;">🌆<span class="badge-breve">Em breve</span></div>
-      <div class="guia-card-body">
-        <h3>Porto Alegre</h3>
-        <p>Gastronomia, cultura e vida urbana na capital gaúcha.</p>
-      </div>
-    </a>
-    <a href="#" class="guia-card em-breve">
-      <div class="guia-card-top" style="background:#1A0A00;">🍇<span class="badge-breve">Em breve</span></div>
-      <div class="guia-card-body">
-        <h3>Serra Gaúcha</h3>
-        <p>Vinícolas, cantinas e experiências únicas na Serra.</p>
-      </div>
+  <div class="hero-main">
+    <h1>Conteúdo<br>que <em>faz sentido</em><br>para você</h1>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">Dicas gastronômicas, guias de cidade e experiências reais do Rio Grande do Sul. Direto de quem vive e respira cultura gaúcha.</p>
+    <a href="#guias" class="hero-scroll">
+      <span class="scroll-arrow">↓</span>
+      Explorar
     </a>
   </div>
 </section>
 
-<!-- VIVA SANTA MARIA HERO -->
-<div id="viva-sm" class="viva-hero">
-  <div>
-    <h2><span>Guia Completo</span>Viva<br>Santa<br>Maria</h2>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="num">12+</div>
+    <div class="lbl">Anos de conteúdo</div>
   </div>
-  <p class="viva-hero-desc">Tudo que você precisa saber sobre a Princesinha do Planalto em um só lugar. Encontre os melhores estabelecimentos por categoria, com informações atualizadas e curadoria de quem vive a cidade.</p>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="num">4</div>
+    <div class="lbl">Guias de cidade</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="num">80+</div>
+    <div class="lbl">Categorias no guia</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="num">2</div>
+    <div class="lbl">Programas ao vivo</div>
+  </div>
 </div>
 
-<!-- CATEGORIAS SANTA MARIA -->
-<section class="categorias">
-  <p class="section-label">Viva Santa Maria</p>
-  <h2 class="section-title">Explore por Categoria</h2>
-  <p class="section-sub">Qual é a sua necessidade agora? Escolha uma categoria e encontre as melhores opções da cidade.</p>
-  <div class="cat-grid">
-    <a href="#" class="cat-item">
-      <span class="cat-icon">☕</span>
-      <span class="cat-label">Cafeterias</span>
-      <span class="cat-count">12 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🍽️</span>
-      <span class="cat-label">Restaurantes</span>
-      <span class="cat-count">38 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🍕</span>
-      <span class="cat-label">Pizzarias</span>
-      <span class="cat-count">15 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🍣</span>
-      <span class="cat-label">Japonesa</span>
-      <span class="cat-count">8 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🍝</span>
-      <span class="cat-label">Italiana</span>
-      <span class="cat-count">11 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🥩</span>
-      <span class="cat-label">Churrascarias</span>
-      <span class="cat-count">9 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🛁</span>
-      <span class="cat-label">Lavanderias</span>
-      <span class="cat-count">7 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🚗</span>
-      <span class="cat-label">Lavagens</span>
-      <span class="cat-count">14 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🅿️</span>
-      <span class="cat-label">Estacionamentos</span>
-      <span class="cat-count">10 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">💈</span>
-      <span class="cat-label">Barbearias</span>
-      <span class="cat-count">18 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">💊</span>
-      <span class="cat-label">Farmácias</span>
-      <span class="cat-count">22 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🏋️</span>
-      <span class="cat-label">Academias</span>
-      <span class="cat-count">16 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🛒</span>
-      <span class="cat-label">Supermercados</span>
-      <span class="cat-count">9 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🌸</span>
-      <span class="cat-label">Salões de Beleza</span>
-      <span class="cat-count">24 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">🐾</span>
-      <span class="cat-label">Pet Shops</span>
-      <span class="cat-count">11 lugares</span>
-    </a>
-    <a href="#" class="cat-item">
-      <span class="cat-icon">+</span>
-      <span class="cat-label">Ver Todos os Segmentos</span>
-      <span class="cat-count">+80 categorias</span>
-    </a>
+<!-- GUIAS DE CIDADE -->
+<section class="section guias" id="guias">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Destinos</p>
+        <h2 class="section-title">Guias de <em>cidade</em></h2>
+      </div>
+      <a href="#" class="section-link">Ver todos →</a>
+    </div>
+    <div class="guias-grid">
+      <a href="#viva" class="guia-card">
+        <div class="guia-icon">🏙️</div>
+        <span class="guia-tag">Ativo</span>
+        <div>
+          <div class="guia-name">Santa Maria</div>
+          <p class="guia-desc">O guia completo da Princesinha do Planalto: cafeterias, restaurantes, serviços e muito mais.</p>
+        </div>
+      </a>
+      <a href="#" class="guia-card">
+        <div class="guia-icon">⛷️</div>
+        <span class="guia-tag">Em breve</span>
+        <div>
+          <div class="guia-name">Gramado</div>
+          <p class="guia-desc">O melhor da cidade mais encantadora do Brasil em todas as estações do ano.</p>
+        </div>
+      </a>
+      <a href="#" class="guia-card">
+        <div class="guia-icon">🌆</div>
+        <span class="guia-tag">Em breve</span>
+        <div>
+          <div class="guia-name">Porto Alegre</div>
+          <p class="guia-desc">Gastronomia, cultura e vida urbana na capital gaúcha.</p>
+        </div>
+      </a>
+      <a href="#" class="guia-card">
+        <div class="guia-icon">🍇</div>
+        <span class="guia-tag">Em breve</span>
+        <div>
+          <div class="guia-name">Serra Gaúcha</div>
+          <p class="guia-desc">Vinícolas, cantinas e experiências únicas na Serra.</p>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ESTABELECIMENTOS EM DESTAQUE -->
-<section class="estabelecimentos">
-  <div class="est-header">
-    <div>
-      <p class="section-label">Viva Santa Maria</p>
-      <h2 class="section-title" style="margin-bottom:0">Destaques</h2>
+<!-- VIVA SANTA MARIA -->
+<section class="section viva" id="viva">
+  <div class="section-inner">
+    <p class="section-label">Guia completo</p>
+    <div class="viva-headline">Viva<br><span>Santa</span><br>Maria</div>
+    <div class="viva-sub">
+      <p class="viva-desc">Tudo que você precisa saber sobre a Princesinha do Planalto em um só lugar. Curadoria de quem vive a cidade.</p>
+      <a href="#categorias" class="btn-yellow">Explorar o guia →</a>
     </div>
-    <div class="cat-filter">
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="section categorias" id="categorias">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Viva Santa Maria</p>
+        <h2 class="section-title">Explore por <em>categoria</em></h2>
+      </div>
+      <a href="#" class="section-link">Todos os segmentos →</a>
+    </div>
+    <div class="cat-grid">
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">☕</div>
+        <div class="cat-label">Cafeterias</div>
+        <div class="cat-count">12 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🍽️</div>
+        <div class="cat-label">Restaurantes</div>
+        <div class="cat-count">38 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🍕</div>
+        <div class="cat-label">Pizzarias</div>
+        <div class="cat-count">15 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🍣</div>
+        <div class="cat-label">Japonesa</div>
+        <div class="cat-count">8 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🍝</div>
+        <div class="cat-label">Italiana</div>
+        <div class="cat-count">11 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🥩</div>
+        <div class="cat-label">Churrascarias</div>
+        <div class="cat-count">9 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🛁</div>
+        <div class="cat-label">Lavanderias</div>
+        <div class="cat-count">7 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🚗</div>
+        <div class="cat-label">Lavagens</div>
+        <div class="cat-count">14 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🅿️</div>
+        <div class="cat-label">Estacionamentos</div>
+        <div class="cat-count">10 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">💈</div>
+        <div class="cat-label">Barbearias</div>
+        <div class="cat-count">18 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">💊</div>
+        <div class="cat-label">Farmácias</div>
+        <div class="cat-count">22 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🏋️</div>
+        <div class="cat-label">Academias</div>
+        <div class="cat-count">16 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🛒</div>
+        <div class="cat-label">Supermercados</div>
+        <div class="cat-count">9 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🌸</div>
+        <div class="cat-label">Salões de Beleza</div>
+        <div class="cat-count">24 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap">🐾</div>
+        <div class="cat-label">Pet Shops</div>
+        <div class="cat-count">11 lugares</div>
+      </a>
+      <a href="#" class="cat-item">
+        <div class="cat-icon-wrap" style="font-size:14px;font-weight:800;">+</div>
+        <div class="cat-label">Ver todos os segmentos</div>
+        <div class="cat-count">+80 categorias</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DESTAQUES -->
+<section class="section destaques">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Viva Santa Maria</p>
+        <h2 class="section-title">Em <em>destaque</em></h2>
+      </div>
+    </div>
+    <div class="filter-row">
       <button class="filter-btn active">Cafeterias</button>
       <button class="filter-btn">Restaurantes</button>
       <button class="filter-btn">Serviços</button>
       <button class="filter-btn">Lazer</button>
     </div>
-  </div>
-  <div class="est-grid">
-    <div class="est-card">
-      <div class="est-card-img" style="background:#F0EBE0;">☕<span class="est-tag">Cafeteria</span></div>
-      <div class="est-card-body">
-        <h4>Nome da Cafeteria</h4>
-        <p class="est-meta">📍 Centro · Seg–Sex 8h–20h</p>
-        <p class="est-desc">Ambiente acolhedor, grãos especiais e aquele ambiente perfeito para trabalhar ou bater papo.</p>
+    <div class="est-grid">
+      <div class="est-card">
+        <div class="est-card-top" style="background:#F0EBE0;">☕<span class="est-tag">Cafeteria</span></div>
+        <div class="est-card-body">
+          <h4>Nome da Cafeteria</h4>
+          <p class="est-meta">📍 Centro · Seg–Sex 8h–20h</p>
+          <p class="est-desc">Ambiente acolhedor, grãos especiais e o espaço perfeito para trabalhar ou bater papo.</p>
+        </div>
       </div>
-    </div>
-    <div class="est-card">
-      <div class="est-card-img" style="background:#EBF0E0;">☕<span class="est-tag">Cafeteria</span></div>
-      <div class="est-card-body">
-        <h4>Nome da Cafeteria</h4>
-        <p class="est-meta">📍 Bairro · Ter–Dom 9h–19h</p>
-        <p class="est-desc">Especialidade em métodos filtrados, bolos artesanais e café da manhã completo.</p>
+      <div class="est-card">
+        <div class="est-card-top" style="background:#EBF0E0;">☕<span class="est-tag">Cafeteria</span></div>
+        <div class="est-card-body">
+          <h4>Nome da Cafeteria</h4>
+          <p class="est-meta">📍 Bairro · Ter–Dom 9h–19h</p>
+          <p class="est-desc">Especialidade em métodos filtrados, bolos artesanais e café da manhã completo.</p>
+        </div>
       </div>
-    </div>
-    <div class="est-card">
-      <div class="est-card-img" style="background:#E0EBF0;">☕<span class="est-tag">Cafeteria</span></div>
-      <div class="est-card-body">
-        <h4>Nome da Cafeteria</h4>
-        <p class="est-meta">📍 Zona Sul · Diariamente 7h–22h</p>
-        <p class="est-desc">Espaço instagramável, cardápio variado e Wi-Fi rápido. Ideal para reuniões casuais.</p>
+      <div class="est-card">
+        <div class="est-card-top" style="background:#E0EBF0;">☕<span class="est-tag">Cafeteria</span></div>
+        <div class="est-card-body">
+          <h4>Nome da Cafeteria</h4>
+          <p class="est-meta">📍 Zona Sul · Diariamente 7h–22h</p>
+          <p class="est-desc">Espaço instagramável, cardápio variado e Wi-Fi rápido. Ideal para reuniões casuais.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- GASTRONOMIA -->
-<section class="gastro" id="gastronomia">
-  <p class="section-label">Conteúdo</p>
-  <h2 class="section-title">Gastronomia</h2>
-  <p class="section-sub">Receitas, análises, tendências e descobertas gastronômicas do RS e do Brasil.</p>
-  <div class="gastro-grid">
-    <div class="gastro-card featured">
-      <div class="gastro-card-top">🍽️</div>
-      <div class="gastro-card-body">
-        <p class="tag">Destaque da semana</p>
-        <h3>Os melhores pratos típicos gaúchos para o inverno</h3>
-        <p>Do arroz de carreteiro ao sopa de capeletti: os clássicos que aquecem o corpo e a alma nos meses mais frios do RS.</p>
+<section class="section gastro" id="gastro">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Conteúdo</p>
+        <h2 class="section-title" style="color:var(--white)">Gastronomia</h2>
       </div>
+      <a href="#" class="section-link" style="color:#555;">Ver tudo →</a>
     </div>
-    <div class="gastro-card">
-      <div class="gastro-card-top">🫕</div>
-      <div class="gastro-card-body">
-        <p class="tag">Dica</p>
-        <h3>Sopas e caldos para pedir no iFood</h3>
-        <p>Os melhores deliveries de sopas em Santa Maria para os dias frios.</p>
+    <div class="gastro-grid">
+      <div class="gastro-card featured">
+        <div class="gastro-img">🍽️</div>
+        <div class="gastro-body">
+          <p class="gastro-tag">Destaque da semana</p>
+          <h3>Os melhores pratos típicos gaúchos para o inverno</h3>
+          <p>Do arroz de carreteiro ao capeletti: os clássicos que aquecem o corpo e a alma nos meses mais frios do RS.</p>
+        </div>
       </div>
-    </div>
-    <div class="gastro-card">
-      <div class="gastro-card-top">🥂</div>
-      <div class="gastro-card-body">
-        <p class="tag">Serra Gaúcha</p>
-        <h3>Vinícolas para visitar em Gramado e região</h3>
-        <p>Um roteiro de experiências enológicas imperdíveis na Serra.</p>
+      <div class="gastro-card">
+        <div class="gastro-img">🫕</div>
+        <div class="gastro-body">
+          <p class="gastro-tag">Dica</p>
+          <h3>Sopas e caldos para pedir no iFood</h3>
+          <p>Os melhores deliveries de sopas em Santa Maria para os dias frios.</p>
+        </div>
+      </div>
+      <div class="gastro-card">
+        <div class="gastro-img">🥂</div>
+        <div class="gastro-body">
+          <p class="gastro-tag">Serra Gaúcha</p>
+          <h3>Vinícolas para visitar em Gramado e região</h3>
+          <p>Um roteiro de experiências enológicas imperdíveis na Serra.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SOBRE -->
-<section class="sobre" id="sobre">
-  <div class="sobre-text">
-    <p class="section-label">Quem é o Albino</p>
-    <h2 class="section-title">Comunicador,<br>criador, gaúcho.</h2>
-    <p>Com mais de 12 anos de produção de conteúdo, sou comunicador, publicitário e apresentador de rádio e TV em Santa Maria, RS. Aqui você encontra dicas reais, guias honestos e muito amor pelo Rio Grande do Sul.</p>
-    <p>Apresento o <strong>Saiba Mais com o Albino</strong> na CDN 93.5 FM e TV Diário, e o <strong>Mais +Pedidas</strong> na +FM 92.7. No Instagram, sou o <strong>@falaalbino</strong>.</p>
-    <div class="sobre-stats">
-      <div class="stat">
-        <div class="stat-num">12+</div>
-        <div class="stat-label">Anos de conteúdo</div>
+<section class="section sobre" id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p class="section-label">Quem é o Albino</p>
+        <h2 class="section-title" style="margin-bottom:32px;">Comunicador,<br><em>criador</em>, gaúcho.</h2>
+        <p>Com mais de 12 anos de produção de conteúdo, sou comunicador, publicitário e apresentador de rádio e TV em Santa Maria, RS.</p>
+        <p>Apresento o <strong>Saiba Mais com o Albino</strong> na CDN 93.5 FM e TV Diário, e o <strong>Mais +Pedidas</strong> na +FM 92.7. No Instagram, sou o <strong>@falaalbino</strong>.</p>
+        <div class="sobre-stats">
+          <div class="stat-box">
+            <div class="num">12+</div>
+            <div class="lbl">Anos de conteúdo</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">2</div>
+            <div class="lbl">Programas ao vivo</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">RS</div>
+            <div class="lbl">Raiz gaúcha</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">∞</div>
+            <div class="lbl">Dicas no forno</div>
+          </div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Programas ao vivo</div>
+      <div class="sobre-visual">
+        <span>🎙️</span>
+        <p>Foto do Albino aqui</p>
       </div>
-      <div class="stat">
-        <div class="stat-num">RS</div>
-        <div class="stat-label">Raiz gaúcha</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">∞</div>
-        <div class="stat-label">Dicas no forno</div>
-      </div>
-    </div>
-  </div>
-  <div class="sobre-visual">
-    <div class="sobre-img-placeholder">
-      <span>🎙️</span>
-      <p>Foto do Albino aqui</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer id="contato">
-  <div class="footer-top">
+<footer id="footer">
+  <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" class="logo">Fala<span style="color:var(--yellow)">Albino</span></a>
+      <a href="#" class="logo">Fala<span>Albino</span></a>
       <p>Gastronomia, guias de cidade e lifestyle gaúcho. Conteúdo de quem vive e respira o Rio Grande do Sul.</p>
     </div>
     <div class="footer-col">
       <h5>Guias</h5>
       <a href="#">Viva Santa Maria</a>
-      <a href="#">Gramado (em breve)</a>
-      <a href="#">Porto Alegre (em breve)</a>
-      <a href="#">Serra Gaúcha (em breve)</a>
+      <a href="#">Gramado</a>
+      <a href="#">Porto Alegre</a>
+      <a href="#">Serra Gaúcha</a>
     </div>
     <div class="footer-col">
       <h5>Conteúdo</h5>
@@ -921,31 +1087,16 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 FalaAlbino.com · Santa Maria, RS</span>
+    <span>© 2026 FalaAlbino.com.br · Santa Maria, RS</span>
     <span>Feito com carinho no Rio Grande do Sul 🐎</span>
   </div>
 </footer>
 
 <script>
-  // Filter buttons interactivity
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-    });
-  });
-
-  // Nav active state on scroll
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.remove('active');
-      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
     });
   });
 </script>
